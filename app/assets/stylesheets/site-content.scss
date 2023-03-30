@@ -1,9 +1,19 @@
-.cafe-image {
+.home-page-container {
+  align-items: center;
   background-image: url(/assets/coffee_on_table.jpg);
-  margin: auto;
-  width: 90vw;
-  height: 90vh;
-  max-height: 6 00px;
-  background-size: cover;
   background-position: center center;
+  background-size: cover;
+  display: flex;
+  height: 90vh;
+  justify-content: center;
+  margin: auto;
+  max-height: 6 00px;
+  width: 90vw;
+}
+
+.order-now {
+}
+
+.order-now-button {
+  color: white;
 }
