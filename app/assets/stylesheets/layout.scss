@@ -1,13 +1,18 @@
+html body {
+  background-color: black;
+}
+
 .welcome {
   margin-right: 20px;
+  color: white;
 }
 
 .nav-cafe-custom {
-  margin-left: 5vw;
-  margin-right: 5vw;
+  width: 90vw;
+  margin: auto;
 }
 
-body {
-  background-color: black;
+.navbar.bg-dark .nav-link {
   color: white;
 }
+
