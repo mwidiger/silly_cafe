@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_03_30_195049) do
   create_table "discounts", force: :cascade do |t|
+    t.string "name"
     t.string "item_id"
     t.float "discount_rate"
     t.string "when_ordered_item_id"
@@ -22,20 +23,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_195049) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "name"
+    t.integer "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_items_on_name"
   end
 
   create_table "order_line_items", force: :cascade do |t|
-    t.string "order_id"
-    t.string "item_id"
+    t.integer "order_id"
+    t.integer "item_id"
     t.float "price"
-    t.string "discount_id"
-    t.float "discount_value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["discount_id"], name: "index_order_line_items_on_discount_id"
     t.index ["item_id"], name: "index_order_line_items_on_item_id"
     t.index ["order_id"], name: "index_order_line_items_on_order_id"
   end
@@ -47,10 +46,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_195049) do
     t.float "total_sale"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["estimated_deliver_at"], name: "index_orders_on_estimated_deliver_at"
   end
 
   create_table "prices", force: :cascade do |t|
-    t.string "item_id"
+    t.integer "item_id"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_195049) do
   end
 
   create_table "tax_rates", force: :cascade do |t|
-    t.string "item_id"
+    t.integer "item_id"
     t.float "tax_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
