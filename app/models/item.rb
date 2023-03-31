@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   validates_presence_of :name
-  has_one :price
-  has_many :order_line_items
+  has_one :price, dependent: :destroy
+  has_many :order_line_items, dependent: :destroy
   has_many :discounts
-  has_one :tax_rate
+  has_one :tax_rate, dependent: :destroy
 end
