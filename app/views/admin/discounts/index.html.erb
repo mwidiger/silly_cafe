@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-between">
+  <div class="pull-left align-top"><h2>Discounts</h2></div>
+  <div class="pull-right align-top">
+    <%= link_to "Create Discount", new_admin_discount_path, class: "btn btn-primary" %>
+  </div>
+</div>
+
+<% if @view_model.discounts.length.zero? %>
+  No active discounts are available at this time
+<% else %>
+  <table class+"table">      
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">When This is Purchased</th>
+        <th scope="col">Then This Will be Discounted</th>
+        <th scope="col">This Much</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= view_model.discounts.each do | discount | %>
+        <tr>
+          <th scope="row"><%= discount.name %></th>
+          <td><%= discount.item.name %></td>
+          <td><%= discount.when_ordered_item.name %></td>
+          <td><%= discount.discount_rate %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
