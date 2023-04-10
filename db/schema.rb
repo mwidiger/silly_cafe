@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_31_182732) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_10_131841) do
   create_table "discounts", force: :cascade do |t|
     t.string "name"
-    t.string "item_id"
+    t.integer "item_id"
     t.float "discount_rate"
-    t.string "when_ordered_item_id"
+    t.integer "when_ordered_item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_discounts_on_item_id"
@@ -23,11 +23,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_31_182732) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "name"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
-    t.index ["name"], name: "index_items_on_name"
+  end
+
+  create_table "order_discounts", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "discount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discount"], name: "index_order_discounts_on_discount"
+    t.index ["order_id"], name: "index_order_discounts_on_order_id"
   end
 
   create_table "order_line_items", force: :cascade do |t|
