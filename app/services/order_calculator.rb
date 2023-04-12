@@ -1,5 +1,5 @@
 class OrderCalculator
-  def self.update_order!(order_id)
+  def self.update_order!(order)
     update_line_items!(order.line_items)
     update_order_record!(order)
   end
