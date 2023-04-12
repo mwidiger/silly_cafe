@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Next steps:
 
-Things you may want to cover:
+* Cache discounts and available items so that the user doesn't get an error when the checkout in the case where discounts, items, or prices change while the user is checking out.
 
-* Ruby version
+* Use `rails_admin` gem or similar to allow site admins to modify prices, items, discounts, etc.
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
