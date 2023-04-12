@@ -12,17 +12,26 @@ Order.delete_all
 OrderLineItem.delete_all
 Discount.delete_all
 OrderDiscount.delete_all
+User.delete_all
 
 i = Item.create(name: "Soda")
 Price.create(item: i, price: '3.00')
 TaxRate.create(item: i, tax_rate: '0.05')
 
 ii = Item.create(name: "Pizza")
-Price.create(item: i, price: '2.50')
-TaxRate.create(item: i, tax_rate: '0.08')
+Price.create(item: ii, price: '2.50')
+TaxRate.create(item: ii, tax_rate: '0.08')
 
 iii = Item.create(name: "Fries")
-Price.create(item: i, price: '2.00')
-TaxRate.create(item: i, tax_rate: '0.05')
+Price.create(item: iii, price: '2.00')
+TaxRate.create(item: iii, tax_rate: '0.05')
 
 d = Discount.create(item: i, when_ordered_item: ii, discount_rate: '0.25')
+
+u = User.create(email: 'test@test.com', password: 'blahblah', encrypted_password: 'blahblah')
+
+o = Order.create(user: u)
+
+oli = Factory::OrderLineItemFactory.create(order: o, item: i, quantity: 2)
+olii = Factory::OrderLineItemFactory.create(order: o, item: ii, quantity: 3)
+oliii = Factory::OrderLineItemFactory.create(order: o, item: iii, quantity: 4)
