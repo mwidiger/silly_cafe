@@ -1,4 +1,7 @@
 class OrderLineItem < ApplicationRecord
+  before_create :ensure_action_comes_from_factory
+  before_update :ensure_action_comes_from_factory
+  before_destroy :ensure_action_comes_from_factory
 
   acts_as_paranoid
   
@@ -8,8 +11,7 @@ class OrderLineItem < ApplicationRecord
 
   validates_presence_of :quantity, :item_id, :order_id
 
-  def initialize(params)
+  def ensure_action_comes_from_factory
     raise CustomException::InvalidCallerError.new("No, use OrderLineItemFactory to create OrderLineItems") unless Validation::OrderLineItemFactoryCheck.pass(caller_locations) 
-    super
   end
 end
