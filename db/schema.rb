@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_10_175051) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_13_130106) do
   create_table "discounts", force: :cascade do |t|
     t.string "name"
     t.integer "item_id"
@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_175051) do
     t.datetime "deleted_at"
     t.integer "user_id"
     t.index ["estimated_deliver_at"], name: "index_orders_on_estimated_deliver_at"
-    t.index ["user_id"], name: "index_orders_on_user_id"
+    t.index ["user_id", "estimated_deliver_at", "created_at"], name: "index_orders_on_user_id_and_estimated_deliver_at_and_created_at"
   end
 
   create_table "prices", force: :cascade do |t|

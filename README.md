@@ -9,3 +9,7 @@ Next steps:
 * Add unit and integration tests
 
 * Add a lot of error checking around params
+
+* Use `.includes` on activerecord calls so that not so many queries are hitting the db on each html request
+
+* Add JS/React elements to make the shopping cart more SPA
